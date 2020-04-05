@@ -35,6 +35,8 @@ def main():
     sorted_dict = {k: v for k, v in sorted(coro_nary.items(), key=lambda x: x[1]["deaths_pmc"], reverse=True)}
     print_dict(sorted_dict)
 
+    print2json(sorted_dict)
+
 
 def print_dict(dict) -> None:
     i = 1
@@ -50,6 +52,11 @@ def print_dict(dict) -> None:
                 dict[x]["deaths_pmc"]
             ))
         i += 1
+
+
+def print2json(dict):
+    with open("../data/dataPerCapita.json", 'w', encoding='utf-8') as f:
+        json.dump(dict, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
